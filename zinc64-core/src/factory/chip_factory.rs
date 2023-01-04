@@ -4,16 +4,9 @@
 
 #![cfg_attr(feature = "cargo-clippy", allow(clippy::too_many_arguments))]
 
-#[cfg(not(feature = "std"))]
-use alloc::prelude::*;
-#[cfg(not(feature = "std"))]
+use alloc::boxed::Box;
 use alloc::rc::Rc;
-#[cfg(not(feature = "std"))]
 use alloc::sync::Arc;
-#[cfg(feature = "std")]
-use std::rc::Rc;
-#[cfg(feature = "std")]
-use std::sync::Arc;
 
 use crate::factory::system_model::{SidModel, VicModel};
 use crate::factory::types::*;

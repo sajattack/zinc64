@@ -2,10 +2,12 @@
 // Copyright (c) 2016-2019 Sebastian Jastrzebski. All rights reserved.
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
-#[cfg(not(feature = "std"))]
-use alloc::prelude::*;
+use alloc::{boxed::Box, vec::Vec};
 use bit_field::BitField;
 use log::LogLevel;
+use core::option::Option::{Some, None, self};
+use log::{log_enabled, log, info, trace, debug};
+
 
 // SPEC: http://ist.uwaterloo.ca/~schepers/formats/CRT.TXT
 

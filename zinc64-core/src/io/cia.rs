@@ -2,8 +2,10 @@
 // Copyright (c) 2016-2019 Sebastian Jastrzebski. All rights reserved.
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
+use core::option::Option::{self, Some, None};
 use bit_field::BitField;
 use log::LogLevel;
+use log::{log_enabled, log, info, trace, debug};
 
 use crate::factory::Chip;
 use crate::util::{new_shared, IoPort, IrqControl, IrqLine, Pin, Shared, SharedCell};

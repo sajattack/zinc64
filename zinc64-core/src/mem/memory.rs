@@ -5,8 +5,6 @@
 use crate::factory::{Addressable, AddressableFaded, Bank, Mmu};
 use crate::mem::{BaseAddr, Mmio};
 use crate::util::{Ram, Rom, Shared};
-#[cfg(not(feature = "std"))]
-use alloc::prelude::*;
 
 // Spec: COMMODORE 64 MEMORY MAPS p. 263
 // Design:

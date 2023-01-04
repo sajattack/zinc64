@@ -3,7 +3,6 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 #![cfg_attr(not(feature = "std"), no_std)]
-#![cfg_attr(not(feature = "std"), feature(alloc))]
 
 #[cfg(not(feature = "std"))]
 #[macro_use]
@@ -21,8 +20,8 @@ mod prg;
 mod tap;
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
-use zinc64_system::{AutostartMethod, Image};
+use alloc::boxed::Box;
+use zinc64_emu::system::{AutostartMethod, Image};
 
 pub use crate::bin::BinLoader;
 pub use crate::io::{Reader, Result};

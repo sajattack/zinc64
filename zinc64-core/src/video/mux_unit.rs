@@ -3,6 +3,8 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 use bit_field::BitField;
+use core::option::Option::{self, Some, None};
+use core::iter::Iterator;
 
 const PRIO_SCREEN_BORDER: u8 = 0;
 const PRIO_FG_SPRITE: u8 = 1;

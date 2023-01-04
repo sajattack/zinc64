@@ -2,8 +2,10 @@
 // Copyright (c) 2016-2019 Sebastian Jastrzebski. All rights reserved.
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
-#[cfg(not(feature = "std"))]
-use alloc::prelude::*;
+use alloc::vec::Vec;
+use alloc::string::ToString;
+use core::option::Option::{self, Some, None};
+
 use bit_field::BitField;
 
 use crate::util::Shared;

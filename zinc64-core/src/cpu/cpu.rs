@@ -2,8 +2,14 @@
 // Copyright (c) 2016-2019 Sebastian Jastrzebski. All rights reserved.
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
+use core::option::Option::{self, Some, None};
+use core::convert::From;
+
 use core::fmt;
+use alloc::format;
 use log::LogLevel;
+use log::{log, log_enabled, info, trace, debug};
+
 
 use crate::factory::{Addressable, Cpu, Register, TickFn};
 use crate::util::{IoPort, IrqLine, Pin, Shared};

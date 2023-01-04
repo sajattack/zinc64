@@ -4,6 +4,8 @@
 
 #![cfg_attr(feature = "cargo-clippy", allow(clippy::cast_lossless))]
 
+use core::option::Option::{self, Some, None};
+
 use bit_field::BitField;
 
 #[derive(Copy, Clone, PartialEq)]

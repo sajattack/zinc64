@@ -5,10 +5,12 @@
 #![cfg_attr(feature = "cargo-clippy", allow(clippy::cast_lossless))]
 #![cfg_attr(feature = "cargo-clippy", allow(clippy::cyclomatic_complexity))]
 
+use core::option::Option;
 use crate::factory::{Chip, VicModel, VideoOutput};
 use crate::util::*;
 use bit_field::BitField;
 use log::LogLevel;
+use log::{log_enabled, log, info, trace, debug};
 
 use super::border_unit::BorderUnit;
 use super::gfx_sequencer::{GfxSequencer, Mode};

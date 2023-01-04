@@ -4,18 +4,16 @@
 
 #![cfg_attr(feature = "cargo-clippy", allow(clippy::cast_lossless))]
 
-#[cfg(not(feature = "std"))]
+use log::{log_enabled, log, info, trace, debug};
+
+
 use alloc::rc::Rc;
-#[cfg(not(feature = "std"))]
 use alloc::sync::Arc;
-#[cfg(feature = "std")]
-use std::rc::Rc;
-#[cfg(feature = "std")]
-use std::sync::Arc;
 
 use crate::factory::{Chip, SidModel, SoundOutput};
 use crate::util::Clock;
 use log::LogLevel;
+
 use resid;
 
 // TODO sound: add sid output sample rate test cases

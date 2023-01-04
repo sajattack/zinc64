@@ -2,10 +2,9 @@
 // Copyright (c) 2016-2019 Sebastian Jastrzebski. All rights reserved.
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
-#[cfg(not(feature = "std"))]
 use alloc::rc::Rc;
-#[cfg(feature = "std")]
-use std::rc::Rc;
+use core::ops::Fn;
+use core::option::Option::{self, Some, None};
 
 /// A tick represents a callback invoked by the cpu for each clock cycle
 /// during instruction execution.

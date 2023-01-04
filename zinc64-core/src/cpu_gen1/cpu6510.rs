@@ -8,6 +8,8 @@ use crate::factory::{make_noop, Addressable, Cpu, Register, TickFn};
 use crate::util::{IoPort, IrqLine, Pin, Shared};
 use core::fmt;
 use log::LogLevel;
+use log::{log, log_enabled, info, trace, debug};
+use alloc::format;
 
 use super::instruction::Instruction;
 

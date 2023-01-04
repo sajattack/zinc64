@@ -3,8 +3,8 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
 use zinc64_system::{AutostartMethod, Image, C64};
+use alloc::{boxed::Box, vec::Vec};
 
 use super::Loader;
 use crate::io::{self, Reader};

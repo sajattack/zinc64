@@ -8,6 +8,7 @@ enum State {
     Low,
 }
 
+#[derive(Clone, Copy)]
 pub struct Pin {
     state: State,
     last: State,
