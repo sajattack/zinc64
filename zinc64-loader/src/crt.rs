@@ -5,9 +5,7 @@
 #![cfg_attr(feature = "cargo-clippy", allow(clippy::cast_lossless))]
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
-#[cfg(not(feature = "std"))]
-use alloc::vec;
+use alloc::{boxed::Box, vec::Vec, borrow::ToOwned};
 use byteorder::BigEndian;
 use core::str;
 use zinc64_emu::device::cartridge;

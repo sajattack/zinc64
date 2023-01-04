@@ -3,9 +3,7 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
-#[cfg(not(feature = "std"))]
-use alloc::vec;
+use alloc::{vec, vec::Vec};
 
 pub struct Ram {
     data: Vec<u8>,

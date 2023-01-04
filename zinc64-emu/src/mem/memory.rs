@@ -3,7 +3,6 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
 use zinc64_core::{Addressable, AddressableFaded, Bank, Mmu, Ram, Rom, Shared};
 
 use crate::mem::{BaseAddr, Mmio};

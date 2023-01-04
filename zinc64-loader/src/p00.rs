@@ -3,7 +3,7 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
+use alloc::{vec::Vec, boxed::Box, borrow::ToOwned};
 use byteorder::LittleEndian;
 use core::str;
 use zinc64_emu::system::autostart;

@@ -5,7 +5,6 @@
 // SPEC: https://www.c64-wiki.com/index.php/Bank_Switching
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
 use log::LogLevel;
 use zinc64_core::{Bank, Mmu};
 

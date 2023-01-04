@@ -3,7 +3,7 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
+use alloc::{string::String, vec::Vec};
 use byteorder::ByteOrder;
 use core::result;
 

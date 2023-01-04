@@ -5,7 +5,7 @@
 #![cfg_attr(feature = "cargo-clippy", allow(clippy::cast_lossless))]
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
+use alloc::string::String;
 use core::fmt;
 use core::iter::Peekable;
 use core::str::Chars;

@@ -3,7 +3,9 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
+use alloc::boxed::Box;
+#[cfg(not(feature = "std"))]
+use alloc::string::ToString;
 
 use super::C64;
 

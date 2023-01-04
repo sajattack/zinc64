@@ -5,7 +5,7 @@
 #![cfg_attr(feature = "cargo-clippy", allow(clippy::too_many_arguments))]
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
+use alloc::boxed::Box;
 #[cfg(not(feature = "std"))]
 use alloc::rc::Rc;
 #[cfg(not(feature = "std"))]

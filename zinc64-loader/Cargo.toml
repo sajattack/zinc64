@@ -17,4 +17,4 @@ std = []
 [dependencies]
 byteorder = { version = "1.3", default-features = false }
 log = { version = "0.3", default-features = false }
-zinc64-emu = { path = "../zinc64-emu", version = "0.8" }
+zinc64-emu = { path = "../zinc64-emu", version = "0.8", default-features = false }

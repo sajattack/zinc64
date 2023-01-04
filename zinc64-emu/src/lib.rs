@@ -3,7 +3,6 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 #![cfg_attr(not(feature = "std"), no_std)]
-#![cfg_attr(not(feature = "std"), feature(alloc))]
 
 #[cfg(feature = "std")]
 extern crate core;

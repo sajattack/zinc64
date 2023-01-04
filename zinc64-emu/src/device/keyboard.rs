@@ -3,7 +3,10 @@
 // Licensed under the GPLv3. See LICENSE file in the project root for full license text.
 
 #[cfg(not(feature = "std"))]
-use alloc::prelude::*;
+use alloc::vec::Vec;
+#[cfg(not(feature = "std"))]
+use alloc::string::ToString;
+
 use bit_field::BitField;
 use zinc64_core::Shared;
 
