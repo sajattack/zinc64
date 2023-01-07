@@ -112,7 +112,7 @@ pub trait ChipFactory {
         &self,
         chip_model: SidModel,
         system_clock: Rc<Clock>,
-        sound_buffer: Arc<dyn SoundOutput>,
+        sound_buffer: Option<Shared<dyn SoundOutput>>,
     ) -> Shared<dyn Chip>;
 
     /// Constructs VIC chip.

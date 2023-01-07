@@ -92,7 +92,7 @@ impl ChipFactory for C64Factory {
         &self,
         chip_model: SidModel,
         system_clock: Rc<Clock>,
-        sound_buffer: Arc<dyn SoundOutput>,
+        sound_buffer: Option<Shared<dyn SoundOutput>>,
     ) -> Shared<dyn Chip> {
         let mut sid = Sid::new(chip_model, system_clock, sound_buffer);
         sid.set_sampling_parameters(

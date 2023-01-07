@@ -52,7 +52,7 @@ fn program_cia1tab() {
     let config = Rc::new(Config::new(SystemModel::from("pal")));
     let factory = Box::new(C64Factory::new(config.clone()));
     let video_output = new_shared(NullVideo {});
-    let sound_output = Arc::new(NullSound {});
+    let sound_output = new_shared(NullSound {});
     let mut c64 = C64::build(config.clone(), &*factory, video_output, sound_output);
     c64.reset(false);
     let cia1_clone = c64.get_cia_1();
@@ -108,7 +108,7 @@ fn exec_keyboard_read() {
     let config = Rc::new(Config::new(SystemModel::from("pal")));
     let factory = Box::new(C64Factory::new(config.clone()));
     let video_output = new_shared(NullVideo {});
-    let sound_output = Arc::new(NullSound {});
+    let sound_output = new_shared(NullSound {});
     let mut c64 = C64::build(config.clone(), &*factory, video_output, sound_output);
     c64.load(&code.to_vec(), 0xc000);
     let keyboard = c64.get_keyboard();

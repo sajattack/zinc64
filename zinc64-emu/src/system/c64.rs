@@ -61,7 +61,7 @@ pub struct C64 {
     keyboard: Keyboard,
     // Buffers
     frame_buffer: Shared<dyn VideoOutput>,
-    sound_buffer: Arc<dyn SoundOutput>,
+    sound_buffer: Option<Shared<dyn SoundOutput>>,
     // Runtime State
     autostart: Option<Autostart>,
     breakpoints: BreakpointManager,
@@ -77,9 +77,9 @@ impl C64 {
         config: Rc<Config>,
         factory: &dyn ChipFactory,
         frame_buffer: Shared<dyn VideoOutput>,
-        sound_buffer: Arc<dyn SoundOutput>,
+        sound_buffer: Option<Shared<dyn SoundOutput>>,
     ) -> C64 {
-        info!(target: "c64", "Initializing system");
+        //info!(target: "c64", "Initializing system");
         // Buffers
         let clock = Rc::new(Clock::default());
         let joystick_1_state = new_shared_cell(0u8);
@@ -124,7 +124,7 @@ impl C64 {
             cia_2_flag_pin.clone(),
             nmi_line.clone(),
         );
-        let sid = factory.new_sid(config.model.sid_model, clock.clone(), sound_buffer.clone());
+        let sid = factory.new_sid(config.model.sid_model, clock.clone(), None);
         let vic = factory.new_vic(
             config.model.vic_model,
             color_ram.clone(),
@@ -238,8 +238,8 @@ impl C64 {
             joystick_1: joystick1,
             joystick_2: joystick2,
             keyboard,
-            frame_buffer: frame_buffer.clone(),
-            sound_buffer: sound_buffer.clone(),
+            frame_buffer,
+            sound_buffer,
             autostart: None,
             breakpoints: BreakpointManager::default(),
             clock,
@@ -381,7 +381,9 @@ impl C64 {
         }
         self.keyboard.reset();
         self.frame_buffer.borrow_mut().reset();
-        self.sound_buffer.reset();
+        if self.sound_buffer.is_some() {
+            self.sound_buffer.as_ref().unwrap().borrow_mut().reset();
+        }
         // Runtime State
         self.frame_count = 0;
         self.last_pc = 0;
@@ -468,7 +470,7 @@ mod tests {
         ));
         let factory = Box::new(C64Factory::new(config.clone()));
         let video_output = new_shared(NullVideo {});
-        let sound_output = Arc::new(NullSound {});
+        let sound_output = new_shared(NullSound {});
         let mut c64 = C64::build(config.clone(), &*factory, video_output, sound_output);
         c64.reset(false);
         let cpu = c64.get_cpu();

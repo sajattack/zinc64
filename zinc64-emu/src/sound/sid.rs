@@ -15,7 +15,7 @@ use std::sync::Arc;
 
 use log::LogLevel;
 use resid;
-use zinc64_core::{Chip, Clock, SidModel, SoundOutput};
+use zinc64_core::{Chip, Clock, SidModel, SoundOutput, Shared};
 
 // TODO sound: add sid output sample rate test cases
 
@@ -30,7 +30,7 @@ pub enum SamplingMethod {
 pub struct Sid {
     // Dependencies
     system_clock: Rc<Clock>,
-    sound_buffer: Arc<dyn SoundOutput>,
+    sound_buffer: Option<Shared<dyn SoundOutput>>,
     // Functional Units
     resid: resid::Sid,
     // Runtime State
@@ -42,9 +42,9 @@ impl Sid {
     pub fn new(
         chip_model: SidModel,
         system_clock: Rc<Clock>,
-        sound_buffer: Arc<dyn SoundOutput>,
+        sound_buffer: Option<Shared<dyn SoundOutput>>,
     ) -> Self {
-        info!(target: "sound", "Initializing SID");
+        //info!(target: "sound", "Initializing SID");
         let resid_model = match chip_model {
             SidModel::Mos6581 => resid::ChipModel::Mos6581,
             SidModel::Mos8580 => resid::ChipModel::Mos8580,
@@ -98,7 +98,9 @@ impl Chip for Sid {
             let mut delta = delta;
             while delta > 0 {
                 let (samples, next_delta) = self.resid.sample(delta, &mut self.buffer[..], 1);
-                self.sound_buffer.write(&self.buffer[0..samples]);
+                if self.sound_buffer.is_some() {
+                    self.sound_buffer.as_ref().unwrap().borrow_mut().write(&self.buffer[0..samples]);
+                }
                 delta = next_delta;
             }
         }
